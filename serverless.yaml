@@ -1,0 +1,32 @@
+service: CustomAuthorizer
+frameworkVersion: '3'
+
+custom:
+  webpack:
+    webpackConfig: './webpack.config.js'
+    includeModules: true
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  httpApi:
+    authorizers:
+      customAuth:
+        type: request
+        functionName: authFunc
+
+functions:
+  authFunc:
+    handler: authHandler.authHandler
+
+  api-handler:
+    handler: handler.hello
+    events:
+      - httpApi:
+          method: GET
+          path: /hello
+          authorizer:
+            name: customAuth
