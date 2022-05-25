@@ -8,11 +8,13 @@ custom:
 
 plugins:
   - serverless-webpack
+  - serverless-offline
 
 provider:
   name: aws
   runtime: nodejs12.x
   httpApi:
+    cors: true
     authorizers:
       customAuth:
         type: request

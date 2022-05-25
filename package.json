@@ -4,9 +4,11 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "offline": "nodemon --exec sls offline start --ignoreJWTSignature --allowCache"
   },
   "dependencies": {
+    "serverless-offline": "^8.8.0",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
